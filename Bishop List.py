@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import csv
 
-
+# Array with all the states and places that are concidered in the US
 states = [' Alabama',' Alaska',' Arizona',' Arkansas',' California',' Colorado',
          ' Connecticut',' Delaware',' Florida',' Georgia',' Hawaii',' Idaho', 
          ' Illinois',' Indiana',' Iowa',' Kansas',' Kentucky',' Louisiana',
@@ -16,15 +16,12 @@ states = [' Alabama',' Alaska',' Arizona',' Arkansas',' California',' Colorado',
          ' Wisconsin',' Wyoming', ' (Melkite Greek)', ' District of Columbia'
          ]
 
-
-title = ''
-firstName = ''
-lastName = ''
-middleName = ''
-
+# List for the data to be stored in
 myList = list()
-
-
+list2 = list()
+nameList = list()
+extensionList = list()
+titleLocationList = list()
 
 
 # Get the page
@@ -34,6 +31,7 @@ soup = BeautifulSoup(page.content, 'lxml')
 # Since there are many ul tags we will find the child of the tag we want and then go to its parent
 ul = soup.find('br').parent.find_all('li')
 
+# Create the csv file to write data to
 b = open('player2.csv','a')
 a = csv.writer(b)
 
@@ -54,32 +52,51 @@ for li in ul:
     elif "\r" in data[-1]:
         data[-1] = data[-1].replace("\r","")
     else:
-        break
-    #print (data[0])    
+        break  
 
     # Get the state
     # This will be our main sorter since it will remove any places that are not in the USA
     if any(word in data[-1] for word in states):
-      #  print (data[-1])
         myList.extend(data)
-        list2 = list()
-        list2.extend([data[-1]])
-        
-        #print(list2)
 
+        if len(data) > 2: #If it is 2 or less state is not provided
+            list2.extend([data[-1]])
+        
+        #print(len(data))
+
+        # Special cases
+        if len(data) == 4:
+            extensionList.extend([data[1]])
+            titleLocationList.extend([data[2]])
+        elif len(data) == 3: # This is the normal case (no extension)
+            titleLocationList.extend([data[1]])
+            extensionList.extend(" ")
+        elif len(data) == 5: # Not sure yet if this case is possiable
+            print("found you")
+        else: # Must be the len = 2 case, Mabye make this the 3 case?
+            extensionList.extend(" ")
+            list2.extend(" ")
+            titleLocationList.extend([data[1]])
+
+            
         #Get full name and title
-        nameList = list()
+        #nameList = list()
         nameList.extend([data[0]])
         #print(nameList)
-        a.writerows([nameList])
-        a.writerows([list2])
-
-        
+        #a.writerows([nameList])
+        #a.writerows([list2])
 
 
+rows = zip(nameList,titleLocationList,extensionList,list2)
+#writer = csv.DictWriter(output, fieldnames=['date', 'v'])
+
+for row in rows:
+    print(row)
+    a.writerow([row])
 #print (len(myList))
 #print(list2)
 
+# Close out of the writer
 b.close()   
 #print(myList)
     
