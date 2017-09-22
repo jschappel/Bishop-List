@@ -57,58 +57,31 @@ for li in ul:
         myList.extend(data)
 
         if len(data) > 2: #If it is 2 or less state is not provided
-            list2.extend([data[-1].encode('utf-8')])
-        
-        #print(len(data))
+            list2.extend([data[-1]])
 
         # Special cases
         if len(data) == 4:
-            extensionList.extend([data[1].encode('utf-8')])
-            titleLocationList.extend([data[2].encode('utf-8')])
+            extensionList.extend([data[1]])
+            titleLocationList.extend([data[2]])
         elif len(data) == 3: # This is the normal case (no extension)
-            titleLocationList.extend([data[1].encode('utf-8')])
+            titleLocationList.extend([data[1]])
             extensionList.extend(" ")
         elif len(data) == 5: # Not sure yet if this case is possiable
             print("found you")
         else: # Must be the len = 2 case, Mabye make this the 3 case?
             extensionList.extend(" ")
             list2.extend(" ")
-            titleLocationList.extend([data[1].encode('utf-8')])
-
+            titleLocationList.extend([data[1]])
             
         #Get full name and title
-        #nameList = list()
-        nameList.extend([data[0].encode('utf-8')])
-        #print(nameList)
-        #a.writerows([nameList])
-        #a.writerows([list2])
+        nameList.extend([data[0]])
 
 # Zip the list up into a tuple
-
-#writer = csv.DictWriter(output, fieldnames=['date', 'v'])
-
-
-# Create the csv file to write data to
-#b = open('BishopSheet.csv','a')
-#a = csv.writer(b)
-
 zipList = zip(nameList,titleLocationList,extensionList,list2)
-#decodedZipList = [[word.decode("utf-8") for word in sets] for sets in zipList]
 
-
-#print(nameList)
+# write the zipList to a cvs file
 with open('BishopList.csv', 'a', newline='') as csv_file:
     writer = csv.writer(csv_file)
     for row in zipList:
         writer.writerow(row)
 print("all done")
-#for row in rows:
-#    print(row)
-#    a.writerow([row])
-#print (len(myList))
-#print(list2)
-
-# Close out of the writer
-#b.close()   
-#print(myList)
-    
