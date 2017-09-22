@@ -31,9 +31,6 @@ soup = BeautifulSoup(page.content, 'lxml')
 # Since there are many ul tags we will find the child of the tag we want and then go to its parent
 ul = soup.find('br').parent.find_all('li')
 
-# Create the csv file to write data to
-b = open('player2.csv','a')
-a = csv.writer(b)
 
 i = 0
 for li in ul:
@@ -60,43 +57,58 @@ for li in ul:
         myList.extend(data)
 
         if len(data) > 2: #If it is 2 or less state is not provided
-            list2.extend([data[-1]])
+            list2.extend([data[-1].encode('utf-8')])
         
         #print(len(data))
 
         # Special cases
         if len(data) == 4:
-            extensionList.extend([data[1]])
-            titleLocationList.extend([data[2]])
+            extensionList.extend([data[1].encode('utf-8')])
+            titleLocationList.extend([data[2].encode('utf-8')])
         elif len(data) == 3: # This is the normal case (no extension)
-            titleLocationList.extend([data[1]])
+            titleLocationList.extend([data[1].encode('utf-8')])
             extensionList.extend(" ")
         elif len(data) == 5: # Not sure yet if this case is possiable
             print("found you")
         else: # Must be the len = 2 case, Mabye make this the 3 case?
             extensionList.extend(" ")
             list2.extend(" ")
-            titleLocationList.extend([data[1]])
+            titleLocationList.extend([data[1].encode('utf-8')])
 
             
         #Get full name and title
         #nameList = list()
-        nameList.extend([data[0]])
+        nameList.extend([data[0].encode('utf-8')])
         #print(nameList)
         #a.writerows([nameList])
         #a.writerows([list2])
 
+# Zip the list up into a tuple
 
-rows = zip(nameList,titleLocationList,extensionList,list2)
 #writer = csv.DictWriter(output, fieldnames=['date', 'v'])
 
-for row in rows:
-    print(row)
-    a.writerow([row])
+
+# Create the csv file to write data to
+#b = open('BishopSheet.csv','a')
+#a = csv.writer(b)
+
+zipList = zip(nameList,titleLocationList,extensionList,list2)
+#decodedZipList = [[word.decode("utf-8") for word in sets] for sets in zipList]
+
+
+#print(nameList)
+with open('BishopList.csv', 'a', newline='') as csv_file:
+    writer = csv.writer(csv_file)
+    for row in zipList:
+        writer.writerow(row)
+print("all done")
+#for row in rows:
+#    print(row)
+#    a.writerow([row])
 #print (len(myList))
 #print(list2)
 
 # Close out of the writer
-b.close()   
+#b.close()   
 #print(myList)
     
