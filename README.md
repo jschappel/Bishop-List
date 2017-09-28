@@ -11,7 +11,7 @@ Emilio Simeon Alluè |  Auxiliary Bishop Emeritus of Boston | S.D.B. |  Massachu
 
 
 ### Built with:
-* [Beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/) - Used for web Scrapping
+* [Beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/) - Used for web scrapping
 * [CSV](https://docs.python.org/3/library/csv.html) - Used to write to CSV file
 * [Requests](https://pypi.python.org/pypi/requests/2.12.1) - Used to get the webpage
 
