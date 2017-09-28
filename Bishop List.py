@@ -18,7 +18,6 @@ states = [' Alabama',' Alaska',' Arizona',' Arkansas',' California',' Colorado',
          ' Vermont',' Virginia',' Washington',' West Virginia',
          ' Wisconsin',' Wyoming', ' (Melkite Greek)', ' District of Columbia'
          ]
-titleList = ['Bishop', 'Archbishop']
 
 # List for the data to be stored in
 locationList = list()
