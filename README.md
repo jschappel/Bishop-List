@@ -16,7 +16,7 @@ Emilio Simeon Alluè |  Auxiliary Bishop Emeritus of Boston | S.D.B. |  Massachu
 * [Requests](https://pypi.python.org/pypi/requests/2.12.1) - Used to get the webpage
 
 
-### Download Instructions
+### Download Instructions:
 ##### For Mac
 1. Downlaod the latest version of [Python 3](https://www.python.org/downloads/)
 2. In Finder under Applications click on terminal
@@ -31,12 +31,34 @@ Emilio Simeon Alluè |  Auxiliary Bishop Emeritus of Boston | S.D.B. |  Massachu
 4. In the command line type the following:
    - pip install requests
    - pip install beautifulsoup4
-  
-### Deployment
-To run the program double click on the *Bishop.py* file. You can also choose to run the program through IDLE. to do this right click the *Bishop.py* file and under *run with* select *choose another file* then search and select IDLE. Once the program has run it will create a csv file titled **BishopList.csv** that is saved to the same location as the program. You can open the file by right clicking on it and selecting Excel.
 
-### Special Instructions for Opening the file with Mac Excel
-If you are running this program on a Mac it is recommended for you to use Pages because Mac excel does not support utf-8 encoding. If you choose to use excel, see these [instructions](https://www.itg.ias.edu/content/how-import-csv-file-uses-utf-8-character-encoding-0).
+### Deployment:
+##### For Windows Only
+To run the program double click on the *Bishop.py* file. You can also choose to run the program through IDLE. To do this right click the *Bishop.py* file and under *open with* select *python*. If python does not show up right away select *choose another app* then search and select python.
+##### For Mac and Windows
+To run the program right click on the *Bishop.py* file and *under run with (In Windows it’s called "Edit With")* select *IDLE*. Then press fn + F5 to run the program (On Windows you just need to press f5).
+
+
+* Once the program has run it will create a csv file titled **BishopList.csv** that is saved to the same location as the program.
+* You are now free to open the program in Google Docs, Pages or any program that offers UTF-8 support.
+
+**If you plan to run this program in excel please do the following:**
+1. Open excel
+2. Select the "Data tab"
+3. Select "Get External Data"
+4. Select "From Text" and open BishopList.csv
+5. One the first Window that appears, under "File Origin" select "Unicode: (UTF-8)"
+   - Depending on your version of excel the file origin name might differ. Any option containing "UTF-8" should work.
+7. Under Original Data Type select "Delimited"
+8. Click "Next"
+9. Under Delimiters, deselect "Tab" and select "Comma"
+10. Click "Next"
+11. Under Column Data Format select "general"
+12. Then click "Finish"
+13. On the Last Window click "Finish"
+    - You can select on new sheet if you wish
+    
+ **If the above was Confusing see these [instructions](https://www.itg.ias.edu/content/how-import-csv-file-uses-utf-8-character-encoding-0). Note: These instructions will work for all versions of excel.**
 
 ### Author
 Joshua Schappel - *Creator* - [JSchappel](https://github.com/jschappel)
