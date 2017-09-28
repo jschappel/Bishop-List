@@ -98,7 +98,8 @@ while i < 3:
 zipList = zip(nameList,titleLocationList,extensionList,locationList)
 
 # write the zipList to a cvs file
-with open('BishopList.csv', 'a', newline='') as csv_file:
+
+with open('BishopList.csv', 'a', newline='',encoding = 'utf-8') as csv_file:
     writer = csv.writer(csv_file)
     for row in zipList:
         writer.writerow(row)
