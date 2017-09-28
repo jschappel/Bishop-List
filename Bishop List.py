@@ -18,9 +18,10 @@ states = [' Alabama',' Alaska',' Arizona',' Arkansas',' California',' Colorado',
          ' Vermont',' Virginia',' Washington',' West Virginia',
          ' Wisconsin',' Wyoming', ' (Melkite Greek)', ' District of Columbia'
          ]
+titleList = ['Bishop', 'Archbishop']
 
 # List for the data to be stored in
-list2 = list()
+locationList = list()
 nameList = list()
 extensionList = list()
 titleLocationList = list()
@@ -44,7 +45,7 @@ while i < 3:
     ul = soup.find('br').parent.find_all('li')
     i = i + 1
     
-    #Loop that will find and sort the data
+    # Loop that will find and sort the data
     for li in ul:
         
         data =(li.get_text(strip=False))
@@ -56,8 +57,7 @@ while i < 3:
         elif "\r\n" in data[-1]:
             data[-1] = data[-1].replace("\r\n", "")
         elif "\n" in data[-1]:
-            data[-1] = da
-            ta[-1].replace("\n", "")
+            data[-1] = data[-1].replace("\n", "")
         elif "\r" in data[-1]:
             data[-1] = data[-1].replace("\r","")
         else:
@@ -68,7 +68,7 @@ while i < 3:
         if any(word in data[-1] for word in states):
 
             if len(data) > 2: #If it is 2 or less state is not provided
-                list2.extend([data[-1]])
+                locationList.extend([data[-1]])
 
             # Special cases
             if len(data) == 4:
@@ -81,14 +81,22 @@ while i < 3:
                 print("found you")
             else: # Must be the len = 2 case, Mabye make this the 3 case?
                 extensionList.extend(" ")
-                list2.extend(" ")
+                locationList.extend(" ")
                 titleLocationList.extend([data[1]])
                 
-            #Get full name and title
-            nameList.extend([data[0]])
-print (list2)
+            # Get full name and title
+            # Remove title because its already in the next column
+            if "Bishop" in data[0]:
+                data[0] = data[0].replace("Bishop ","")
+                nameList.extend([data[0]])
+            elif "Archbishop" in data[0]:
+                data[0] = data[0].replace("Archbishop ","")
+                nameList.extend([data[0]])
+            else:
+                nameList.extend([data[0]])
+                
 # Zip the list up into a tuple
-zipList = zip(nameList,titleLocationList,extensionList,list2)
+zipList = zip(nameList,titleLocationList,extensionList,locationList)
 
 # write the zipList to a cvs file
 with open('BishopList.csv', 'a', newline='') as csv_file:
