@@ -30,7 +30,7 @@ Emilio Simeon Alluè |  Auxiliary Bishop Emeritus of Boston | S.D.B. |  Massachu
 3. Locate the scripts folder, then hold shift + right click. Then select *Open command line here*
 4. In the command line type the following:
    - pip install requests
-   - pip inastll beautifulsoup4
+   - pip install beautifulsoup4
   
 ### Deployment
 To run the program double click on the *Bishop.py* file. You can also choose to run the program through IDLE. to do this right click the *Bishop.py* file and under *run with* select *choose another file* then search and select IDLE. Once the program has run it will create a csv file titled **BishopList.csv** that is saved to the same location as the program. You can open the file by right clicking on it and selecting Excel.
