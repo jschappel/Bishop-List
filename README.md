@@ -1,4 +1,4 @@
-# Bishop-List
+# Bishop List
 ### Overview
 
 This program uses the website, [Catholic Hierarchy](http://www.catholic-hierarchy.org/), to create an excel spreadsheet of all the living bishops in the USA (not including USA Territories). Below is an example of the format:
