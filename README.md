@@ -9,7 +9,6 @@ Joseph Victor Adamec |  Bishop Emeritus of Altoona-Johnstown | |  Pennsylvania
 Emilio Simeon Alluè |  Auxiliary Bishop Emeritus of Boston | S.D.B. |  Massachusetts
 
 
-
 ### Built with:
 * [Beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/) - Used for web scrapping
 * [CSV](https://docs.python.org/3/library/csv.html) - Used to write to CSV file
